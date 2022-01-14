@@ -1,11 +1,10 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import './Visualizer.css';
+
+function Visualizer() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
           Test test test. Testy test test
         </p>
@@ -15,4 +14,4 @@ function App() {
   );
 }
 
-export default App;
+export default Visualizer;
