@@ -1,0 +1,13 @@
+.navbar{
+    width: 100vmax;
+    height: 5vmin;
+    background: #444;
+    position: absolute;
+    bottom: 0;
+    al
+}
+
+.navbar button {
+    position: relative;
+    margin: 1vmin;
+}
