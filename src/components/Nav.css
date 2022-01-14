@@ -4,7 +4,7 @@
     background: #444;
     position: absolute;
     bottom: 0;
-    al
+    line-height: 5vmin;
 }
 
 .navbar button {
