@@ -15,9 +15,9 @@ function Visualizer() {
 }
 
 //from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
-function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
+function getRandomInt(){
+  let min = Math.ceil(5);
+  let max = Math.floor(500);
   return Math.floor(Math.random() * (max - min) + min); 
 }
 export default Visualizer;
