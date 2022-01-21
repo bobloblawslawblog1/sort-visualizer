@@ -8,8 +8,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    color: white;
 }
 
 .navbar > * {
     margin: 0 1vmin;
+}
+
+.value{
+    flex: 0 1 3em;
 }
