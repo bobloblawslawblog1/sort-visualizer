@@ -1,6 +1,15 @@
 .App {
   text-align: center;
   height: 100vmin;
-  background: #ff00ff;
+  background: #e1e1e1;
+}
+.View{
+  height: 95vmin;
+  display: flex;
+  margin: 0 33.33vmin;
+  justify-content: center;
 }
 
+.box{
+  background: gray;
+}

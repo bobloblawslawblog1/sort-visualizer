@@ -2,12 +2,14 @@
     width: 100vmax;
     height: 5vmin;
     background: #444;
-    position: absolute;
+    position: relative;
     bottom: 0;
     line-height: 5vmin;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.navbar button {
-    position: relative;
-    margin: 1vmin;
+.navbar > * {
+    margin: 0 1vmin;
 }
