@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import './Nav.css';
 
-function Nav({stateChange, value}){ 
+function Nav({stateChange, value, mergeBtn}){ 
     const [size,setSize] = useState(value);
 
     const handleSubmit = (event) => {
@@ -12,7 +12,7 @@ function Nav({stateChange, value}){
 
     return(
         <div className='navbar'>
-            <button>Merge Sort</button>
+            <button onClick={mergeBtn}>Merge Sort</button>
             <button>Quick Sort</button>
             <button>Bubble Sort</button>
             <button>Insertion Sort</button>

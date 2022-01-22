@@ -2,14 +2,16 @@
   text-align: center;
   height: 100vmin;
   background: #e1e1e1;
+  width: 100vmax;
 }
 .View{
   height: 95vmin;
   display: flex;
   margin: 0 10vmin;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 .box{
   background: gray;
 }
+
