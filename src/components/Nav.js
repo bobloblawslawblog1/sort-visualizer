@@ -9,10 +9,15 @@ function Nav({stateChange, value, mergeBtn}){
         event.preventDefault();
         stateChange(size);
     }
+    
+    const handleMergeBtn = (event) => {
+        event.preventDefault();
+        mergeBtn();
+    }
 
     return(
         <div className='navbar'>
-            <button onClick={mergeBtn}>Merge Sort</button>
+            <button onClick={handleMergeBtn}>Merge Sort</button>
             <button>Quick Sort</button>
             <button>Bubble Sort</button>
             <button>Insertion Sort</button>
