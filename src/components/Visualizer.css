@@ -15,3 +15,23 @@
   background: gray;
 }
 
+.navbar{
+  width: 100vmax;
+  height: 5vmin;
+  background: #444;
+  position: relative;
+  bottom: 0;
+  line-height: 5vmin;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.navbar > * {
+  margin: 0 1vmin;
+}
+
+.value{
+  flex: 0 1 3em;
+}
