@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Visualizer from './components/Visualizer';
-import Nav from './components/Nav';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
