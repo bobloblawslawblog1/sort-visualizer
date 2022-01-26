@@ -1,3 +1,4 @@
+
 export function merge(arr, l, m, r){
 
     var n1 = m-l+1;
@@ -40,7 +41,6 @@ export function merge(arr, l, m, r){
         j++;
         k++;
     }
-
 }
 
 
