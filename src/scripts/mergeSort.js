@@ -36,13 +36,17 @@ function merge(arr, l, m, r,animations){
         arr[k] = a1[i];
         i++;
         k++;
+        animations.push([...arr]);
     }
 
     while(j < n2){
         arr[k] = a2[j];
         j++;
         k++;
+        animations.push([...arr]);
     }
+    
+
 }
 
 
@@ -50,7 +54,7 @@ function mergeSort(arr,l,r,animations){
     if(l>=r){
         return animations;
     }
-    //animations.push([...arr]);
+    
     var m = l+parseInt((r-l)/2);
     mergeSort(arr,l, m,animations);
     mergeSort(arr,m+1,r,animations);
