@@ -3,6 +3,7 @@ import { useState } from 'react';
 import mergeSort from './scripts/mergeSort';
 import quickSort from './scripts/quickSort';
 import React from 'react';
+import { useEffect } from 'react/cjs/react.development';
 
 
 
@@ -10,24 +11,30 @@ function Visualizer() {
   const [arrSize, setArrSize] = useState(10);
   const [arr,setArr] = useState([]);
   
+  useEffect(()=>{
+    if(arr.length < 1){
+      resetArr(arrSize);
+    }
+    console.log(arr);
+  });
+
   const handleMsBtn = () => {
-    console.log(arr);
-    mergeSort(arr,0,arr.length-1);
-    setArr(arr);
-    console.log(arr);
+    let temp = [...arr];
+    mergeSort(temp,0,temp.length-1);
+    setArr(temp);
   }
 
   const handleQsBtn = () => {
-    console.log(arr);
-    quickSort(arr,0,arr.length-1);
-    setArr(arr);
-    document.getElementsByClassName('element')[0].style.background = "red";
+    let temp = [...arr];
+    quickSort(temp,0,temp.length-1);
+    setArr(temp);
   }
 
-  function randomArr(len){
+
+  function resetArr(len){
     let arr = [];
     for(let i = 0; i < len; i++){
-      arr[i] = getRandomInt();
+      arr.push(getRandomInt());
     }
     setArr(arr);
   }
@@ -35,14 +42,14 @@ function Visualizer() {
   const handleSubmit = (event) => {
     event.preventDefault();
     setArrSize(arrSize);
-    randomArr(arrSize);
+    resetArr(arrSize);
   }
   
   return (
     <div className="App">
       <div className='View'> 
         {arr.map((element,index) => <div key={index} className='element' style={{height: `${element/10}%`, background: "#77448f",
-         alignSelf: "flex-end",flex: "1 0 0px", overflow: "hidden", margin: "0 .5px"}}></div>)}
+         alignSelf: "flex-end",flex: "1 0 0px", overflow: "hidden", margin: "0 .5px"}}>{element}</div>)}
       </div>
       <div className='navbar'>
             <button onClick={handleMsBtn}>Merge Sort</button>
@@ -52,7 +59,7 @@ function Visualizer() {
             <form onSubmit={handleSubmit}>
                 <label>
                     Array Size:
-                    <input type="number" className='value' min="10" max="500" name='arrSize' value={arrSize} onChange={(e) => setArrSize(e.target.value)}/>
+                    <input type="number" className='value' min="10" max="500" name='arrSize' value={arrSize} onChange={(e) => setArrSize(e.target.value)} onInput={(e) => setArrSize(e.target.value)}/>
                     <input type="range" min="10" max="500" step="1" name='arrSize' value={arrSize} onChange={(e) => setArrSize(e.target.value)}/>
                 </label> 
                 <input type="submit" value="Enter"/>
@@ -72,5 +79,7 @@ export function getRandomInt(){
   let max = Math.floor(1000);
   return Math.floor(Math.random() * (max - min) + min); 
 }
+
+
 
 
