@@ -10,28 +10,41 @@ import { useEffect } from 'react/cjs/react.development';
 function Visualizer() {
   const [arrSize, setArrSize] = useState(10);
   const [arr,setArr] = useState([]);
-  
+  const [animations, setAnimations] = useState([]);
+
   useEffect(()=>{
     if(arr.length < 1){
       resetArr(arrSize);
     }
-    console.log(arr);
   });
+
+  useEffect(()=>{
+    if(animations.length > 0){
+      setTimeout(() => {
+        let temp = [...animations];
+        let i = temp.shift();
+        console.log(temp);
+        setArr([...i]);
+        setAnimations(temp);
+      }, 10); 
+    }
+  },[arr]);
+
 
   const handleMsBtn = () => {
     let temp = [...arr];
-    mergeSort(temp,0,temp.length-1);
-    setArr(temp);
+    mergeSort(temp,0,temp.length-1,animations);
+    setArr([...arr]);
   }
 
   const handleQsBtn = () => {
     let temp = [...arr];
-    quickSort(temp,0,temp.length-1);
-    setArr(temp);
+    quickSort(temp,0,temp.length-1,animations);
+    setArr([...arr]);
   }
 
 
-  function resetArr(len){
+  const resetArr = (len) => {
     let arr = [];
     for(let i = 0; i < len; i++){
       arr.push(getRandomInt());
@@ -43,6 +56,7 @@ function Visualizer() {
     event.preventDefault();
     setArrSize(arrSize);
     resetArr(arrSize);
+    setAnimations([]);
   }
   
   return (

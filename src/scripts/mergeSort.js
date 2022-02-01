@@ -1,5 +1,5 @@
 
-function merge(arr, l, m, r){
+function merge(arr, l, m, r,animations){
 
     var n1 = m-l+1;
     var n2 = r-m;
@@ -28,7 +28,9 @@ function merge(arr, l, m, r){
             j++;
         }
         k++;
+        animations.push([...arr]);
     }
+    
 
     while(i < n1){
         arr[k] = a1[i];
@@ -44,13 +46,14 @@ function merge(arr, l, m, r){
 }
 
 
-function mergeSort(arr,l,r){
+function mergeSort(arr,l,r,animations){
     if(l>=r){
-        return;
+        return animations;
     }
+    //animations.push([...arr]);
     var m = l+parseInt((r-l)/2);
-    mergeSort(arr,l, m);
-    mergeSort(arr,m+1,r);
-    merge(arr,l,m,r);
+    mergeSort(arr,l, m,animations);
+    mergeSort(arr,m+1,r,animations);
+    merge(arr,l,m,r,animations);
 }
 export default mergeSort;

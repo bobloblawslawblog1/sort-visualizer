@@ -4,28 +4,31 @@ function swap(arr, i, j){
     arr[j] = temp;
 }
 
-function partition(arr,low,high){
+
+function partition(arr,low,high,animations){
+    
     let pivot = arr[high];
-
-    let i = (low -1);
-
+    let i = low;
     for(let j=low; j < high; j++){
-        if(arr[j]<pivot){
-            i++;
+        if(arr[j]<pivot){ 
             swap(arr,i,j);
+            i++;
+            animations.push([...arr]);
         }
     }
-    swap(arr, i + 1, high);
-    return (i + 1);
+    swap(arr, i, high);
+    animations.push([...arr]);
+    return (i);
 }
 
-function quickSort(arr,low,high){
+function quickSort(arr,low,high,animations){
     if(low < high){
-        let pi = partition(arr, low, high);
-
-        quickSort(arr,low, pi-1);
-        quickSort(arr,pi +1, high);
+        let pi = partition(arr, low, high,animations);
+        
+        quickSort(arr,low, pi-1,animations);
+        quickSort(arr,pi +1, high,animations);
     }
+    return animations;
 }
 
 export default quickSort;
