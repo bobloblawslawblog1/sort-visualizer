@@ -8,48 +8,61 @@ import { useEffect } from 'react/cjs/react.development';
 
 
 function Visualizer() {
-  const [arrSize, setArrSize] = useState(10);
+  const [arrSize, setArrSize] = useState(100);
   const [arr,setArr] = useState([]);
   const [animations, setAnimations] = useState([]);
+  const [sorted,setSorted] = useState(false);
+  const [colors,setColors] = useState([]);
 
   useEffect(()=>{
-    if(arr.length < 1){
-      resetArr(arrSize);
-    }
-  });
+    resetArr(arrSize);
+  },[]);
 
   useEffect(()=>{
     if(animations.length > 0){
       setTimeout(() => {
         let temp = [...animations];
+        let temp2 = [...colors];
+        if(colors.length > 1) {temp2.shift()};
         let i = temp.shift();
         console.log(temp);
         setArr([...i]);
         setAnimations(temp);
-      }, 10); 
+        setColors(temp2);
+      }, 100); 
     }
   },[arr]);
 
 
   const handleMsBtn = () => {
-    let temp = [...arr];
-    mergeSort(temp,0,temp.length-1,animations);
-    setArr([...arr]);
+    if(!sorted){
+      let temp = [...arr];
+      mergeSort(temp,0,temp.length-1,animations);
+      setArr([...arr]);
+      setSorted(true);
+    }
   }
 
   const handleQsBtn = () => {
-    let temp = [...arr];
-    quickSort(temp,0,temp.length-1,animations);
-    setArr([...arr]);
+    if(!sorted){
+      let temp = [...arr];
+      quickSort(temp,0,temp.length-1,animations,colors,setColors);
+      setArr([...arr]);
+      setSorted(true);
+    }
   }
 
 
   const resetArr = (len) => {
     let arr = [];
+    let c = [];
     for(let i = 0; i < len; i++){
       arr.push(getRandomInt());
+      c.push(0);
     }
     setArr(arr);
+    setSorted(false);
+    setColors([c]);
   }
 
   const handleSubmit = (event) => {
@@ -62,7 +75,7 @@ function Visualizer() {
   return (
     <div className="App">
       <div className='View'> 
-        {arr.map((element,index) => <div key={index} className='element' style={{height: `${element/10}%`, background: "#77448f",
+      {arr.map((element,index) => <div key={index} className='element' style={{height: `${element/10}%`, background: (colors[0][index] === 0)? "#77448f":(colors[0][index] === 1) ? "green":(colors[0][index] === 2) ? "red":{},
          alignSelf: "flex-end",flex: "1 0 0px", overflow: "hidden", margin: "0 .5px"}}>{element}</div>)}
       </div>
       <div className='navbar'>
