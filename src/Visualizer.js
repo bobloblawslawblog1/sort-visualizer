@@ -1,9 +1,8 @@
 import './Visualizer.css';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import mergeSort from './scripts/mergeSort';
 import quickSort from './scripts/quickSort';
 import React from 'react';
-import { useEffect } from 'react/cjs/react.development';
 
 
 
